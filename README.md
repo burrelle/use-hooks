@@ -151,58 +151,19 @@ const Counter = (props) => {
 } 
 ```
 
-Toggle likes and retweets with no shared logic between state items...
-```jsx
-import React from "react";
-
-export default class Tweet extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { likes: 0, liked: false, retweets: 0, retweeted: false };
-  }
-
-  handleLikeOnClick = () => {
-    !this.state.liked
-      ? this.setState({ liked: true, likes: this.state.likes + 1 })
-      : this.setState({ liked: false, likes: this.state.likes - 1 });
-  };
-
-  handleRetweetOnClick = () => {
-    !this.state.retweeted
-      ? this.setState({
-          retweeted: true,
-          retweets: this.state.retweets + 1
-        })
-      : this.setState({
-          retweeted: false,
-          retweets: this.state.retweets - 1
-        });
-  };
-
-  render() {
-    return (
-      <div>
-        <h2>@d3v3l0p3r tweeted: "Developer Twitter opinion"</h2>
-        <div onClick={this.handleLikeOnClick}>
-          {!this.state.liked ? <span>Heart: </span> : <span>Hearted: </span>}
-          {this.state.likes}
-        </div>
-        <div onClick={this.handleRetweetOnClick}>
-          {!this.state.retweeted ? (
-            <span>Retweet: </span>
-          ) : (
-            <span>Retweeted: </span>
-          )}
-          {this.state.retweets}
-        </div>
-      </div>
-    );
-  }
-}
-```
-
-TODO: Styling for class values
-
 Enter useState() hook
 ```
+import React, {useState, Fragment} from 'react'
+
+export default function Counter(){
+  const [counter, setCounter] = useState(0);
+
+  return(
+    <Fragment>
+      <p>{counter}</p>
+      <button onClick={() => setCounter(counter + 1)}>+</button>
+      <button onClick={() => setCounter(counter - 1)}>-</button>
+    </Fragment>
+  )
+}
 ```
