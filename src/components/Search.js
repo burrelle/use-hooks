@@ -4,21 +4,20 @@ import Suggestions from './Suggestions';
 
 class Search extends Component {
   state = {
-    searchable: [],
     query: '',
-    results: []
+    searchable: [],
+    results: [],
   };
 
   async componentDidMount() {
     const { data } = await axios.get('https://api.punkapi.com/v2/beers');
-    const names = data.map(({ name }) => name);
-    this.setState({ searchable: names });
+    this.setState({ searchable: data });
   }
 
   getInfo = wordToMatch => {
-    return this.state.searchable.filter(beer => {
+    return this.state.searchable.filter(item => {
       const regex = new RegExp(wordToMatch, 'gi');
-      return beer.match(regex);
+      return item.name.match(regex);
     });
   };
 
