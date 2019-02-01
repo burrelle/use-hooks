@@ -11,10 +11,7 @@ class Search extends Component {
 
   async componentDidMount() {
     const { data } = await axios.get('https://api.punkapi.com/v2/beers');
-    const names = [];
-    data.forEach(({ name }) => {
-      names.push(name);
-    });
+    const names = data.map(({ name }) => name);
     this.setState({ searchable: names });
   }
 
@@ -27,9 +24,9 @@ class Search extends Component {
 
   handleInputChange = () => {
     this.setState({ query: this.search.value }, () => {
-      if (this.state.query && this.state.query.length >= 1) {
-        this.setState({ results: this.getInfo(this.state.query) });
-      }
+      this.state.query && this.state.query.length >= 1
+        ? this.setState({ results: this.getInfo(this.state.query) })
+        : this.setState({ results: [] });
     });
   };
 
