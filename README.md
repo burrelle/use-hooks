@@ -152,7 +152,7 @@ const Counter = (props) => {
 ```
 
 Enter useState() hook
-```
+```jsx
 import React, {useState, Fragment} from 'react'
 
 export default function Counter(){
