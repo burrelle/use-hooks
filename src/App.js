@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
-import BeerList from './components/BeerList'
-import HooksBeerList from './components/HooksBeerList';
-import Search from './components/Search';
+import BeerList from './components/BeerList';
+import HooksSearch from './components/HooksSearch';
 
 class App extends Component {
   render() {
     return (
       <div>
         <BeerList />
-        <HooksBeerList />
-        <Search />
+        <HooksSearch />
       </div>
     );
   }

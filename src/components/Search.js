@@ -21,8 +21,8 @@ class Search extends Component {
     });
   };
 
-  handleInputChange = () => {
-    this.setState({ query: this.search.value }, () => {
+  handleInputChange = (e) => {
+    this.setState({ query: e.target.value }, () => {
       this.state.query && this.state.query.length >= 1
         ? this.setState({ results: this.getInfo(this.state.query) })
         : this.setState({ results: [] });
@@ -34,7 +34,7 @@ class Search extends Component {
       <form>
         <input
           placeholder="Search for..."
-          ref={input => (this.search = input)}
+          value={this.state.query}
           onChange={this.handleInputChange}
         />
         <Suggestions results={this.state.results} />
