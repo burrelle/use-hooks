@@ -1,6 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
 import Suggestions from './Suggestions';
+import SearchIcon from './SearchIcon';
+
+const Input = styled.input`
+  width: 28rem;
+  padding: 1rem;
+  border-style: none;
+  outline: none;
+  margin-left: 0.25rem;
+  font-size: 1rem;
+`;
+
+const Form = styled.form`
+  display: flex;
+  align-items: center;
+  border: 1px solid grey;
+  padding: 0 1rem;
+  border-radius: 1rem;
+`;
 
 export default function HooksSearch() {
   const [query, setQuery] = useState('');
@@ -29,14 +48,15 @@ export default function HooksSearch() {
 
   return (
     <div>
-      <form>
-        <input
+      <Form>
+        <SearchIcon width="16" height="16" />
+        <Input
           type="text"
           placeholder="Search for..."
           value={query}
           onChange={e => setQuery(e.target.value)}
         />
-      </form>
+      </Form>
       <Suggestions results={results} />
     </div>
   );

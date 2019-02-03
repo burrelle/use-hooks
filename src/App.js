@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
-import BeerList from './components/BeerList';
+import styled from 'styled-components';
 import HooksSearch from './components/HooksSearch';
+
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
 
 class App extends Component {
   render() {
     return (
-      <div>
-        <BeerList />
+      <Wrapper>
         <HooksSearch />
-      </div>
+      </Wrapper>
     );
   }
 }
