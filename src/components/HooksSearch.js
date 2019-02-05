@@ -21,10 +21,15 @@ const Form = styled.form`
   border-radius: 1rem;
 `;
 
-const useFetch = (url, setData) => {
+/**
+ * useFetch
+ * @param {string} url - url to get
+ * @param {function} dataToBeSet - function to set data returned from get request
+ */
+const useFetch = (url, dataToBeSet) => {
   const fetchData = async () => {
     const { data } = await axios.get(url);
-    setData(data);
+    dataToBeSet(data);
   };
 
   useEffect(() => {
@@ -32,12 +37,26 @@ const useFetch = (url, setData) => {
   }, []);
 };
 
+/**
+ * useResults
+ * @param {string} query - Query state
+ * @param {function} setResults - Function to set results
+ * @param {function} getInfo - Function to filter results
+ * @param {array} searchable - Array to be searched
+ */
 const useResults = (query, setResults, getInfo, searchable) => {
   useEffect(() => {
-    query && query.length >= 1 ? setResults(getInfo(searchable, query)) : setResults([]);
+    query && query.length >= 1
+      ? setResults(getInfo(searchable, query))
+      : setResults([]);
   }, [query]);
-}
+};
 
+/**
+ *
+ * @param {array} searchable - Array to be searched
+ * @param {string} wordToMatch - String to match against
+ */
 const getInfo = (searchable, wordToMatch) => {
   return searchable.filter(item => {
     const regex = new RegExp(wordToMatch, 'gi');
@@ -53,7 +72,7 @@ export default function HooksSearch() {
 
   const url = 'https://api.punkapi.com/v2/beers';
   useFetch(url, setSearchable);
-  useResults(query, setResults, getInfo, searchable)
+  useResults(query, setResults, getInfo, searchable);
 
   return (
     <div>
