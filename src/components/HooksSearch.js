@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import Suggestions from './Suggestions';
@@ -49,6 +49,7 @@ export default function HooksSearch() {
   const [query, setQuery] = useState('');
   const [searchable, setSearchable] = useState([]);
   const [results, setResults] = useState([]);
+  const queryRef = useRef(query);
 
   const url = 'https://api.punkapi.com/v2/beers';
   useFetch(url, setSearchable);
@@ -61,8 +62,8 @@ export default function HooksSearch() {
         <Input
           type="text"
           placeholder="Search for..."
-          value={query}
-          onChange={e => setQuery(e.target.value)}
+          ref={queryRef}
+          onChange={() => setQuery(queryRef.current.value)}
         />
       </Form>
       <Suggestions results={results} />
