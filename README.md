@@ -316,3 +316,152 @@ export default function FormInput({
   );
 }
 ```
+
+useHooks: [useState, useEffect]
+```jsx
+export default function HooksSearch() {
+  const [query, setQuery] = useState('');
+  const [searchable, setSearchable] = useState([]);
+  const [results, setResults] = useState([]);
+
+  const fetchData = async () => {
+    const { data } = await axios.get('https://api.punkapi.com/v2/beers');
+    setSearchable(data);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const getInfo = wordToMatch => {
+    return searchable.filter(item => {
+      const regex = new RegExp(wordToMatch, 'gi');
+      return item.name.match(regex);
+    });
+  };
+
+  useEffect(() => {
+    query && query.length >= 1 ? setResults(getInfo(query)) : setResults([]);
+  }, [query]);
+
+  return (
+    <div>
+      <Form>
+        <SearchIcon width="16" height="16" />
+        <Input
+          type="text"
+          placeholder="Search for..."
+          value={query}
+          onChange={e => setQuery(e.target.value)}
+        />
+      </Form>
+      <Suggestions results={results} />
+    </div>
+  );
+}
+```
+
+Custom Hooks
+```jsx
+const useFetch = (url, setData) => {
+  const fetchData = async () => {
+    const { data } = await axios.get(url);
+    setData(data);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+};
+
+const useResults = (query, setResults, getInfo, searchable) => {
+  useEffect(() => {
+    query && query.length >= 1 ? setResults(getInfo(searchable, query)) : setResults([]);
+  }, [query]);
+}
+
+const getInfo = (searchable, wordToMatch) => {
+  return searchable.filter(item => {
+    const regex = new RegExp(wordToMatch, 'gi');
+    return item.name.match(regex);
+  });
+};
+
+export default function HooksSearch() {
+  const [query, setQuery] = useState('');
+  const [searchable, setSearchable] = useState([]);
+  const [results, setResults] = useState([]);
+
+  const url = 'https://api.punkapi.com/v2/beers';
+  useFetch(url, setSearchable);
+  useResults(query, setResults, getInfo, searchable)
+
+  return (
+    <div>
+      <Form>
+        <SearchIcon width="16" height="16" />
+        <Input
+          type="text"
+          placeholder="Search for..."
+          value={query}
+          onChange={e => setQuery(e.target.value)}
+        />
+      </Form>
+      <Suggestions results={results} />
+    </div>
+  );
+}
+```
+
+Custom Hooks + useRef
+```jsx
+const useFetch = (url, setData) => {
+  const fetchData = async () => {
+    const { data } = await axios.get(url);
+    setData(data);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+};
+
+const useResults = (query, setResults, getInfo, searchable) => {
+  useEffect(() => {
+    query && query.length >= 1 ? setResults(getInfo(searchable, query)) : setResults([]);
+  }, [query]);
+}
+
+const getInfo = (searchable, wordToMatch) => {
+  return searchable.filter(item => {
+    const regex = new RegExp(wordToMatch, 'gi');
+    return item.name.match(regex);
+  });
+};
+
+export default function HooksSearch() {
+  const [query, setQuery] = useState('');
+  const [searchable, setSearchable] = useState([]);
+  const [results, setResults] = useState([]);
+  const queryRef = useRef(query);
+
+  const url = 'https://api.punkapi.com/v2/beers';
+  useFetch(url, setSearchable);
+  useResults(query, setResults, getInfo, searchable)
+
+  return (
+    <div>
+      <Form>
+        <SearchIcon width="16" height="16" />
+        <Input
+          type="text"
+          placeholder="Search for..."
+          ref={queryRef}
+          onChange={() => setQuery(queryRef.current.value)}
+        />
+      </Form>
+      <Suggestions results={results} />
+    </div>
+  );
+}
+```
