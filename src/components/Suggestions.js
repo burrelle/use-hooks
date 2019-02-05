@@ -9,20 +9,20 @@ const Results = styled.ul`
 const Beers = styled.li`
   display: flex;
   align-items: center;
-  margin-bottom: .5rem;
-`
+  margin-bottom: 0.5rem;
+`;
 
 const Image = styled.img`
   margin-right: 1rem;
-`
+`;
 
 const Suggestions = ({ results }) => {
   return (
     <Results>
-      {results.map((beer, i) => (
+      {results.map(({ image_url, name }, i) => (
         <Beers key={i}>
-          <Image src={beer.image_url} alt={beer.name} height="64" width="16" />
-          {beer.name}
+          <Image src={image_url} alt={name} height="64" width="16" />
+          {name}
         </Beers>
       ))}
     </Results>
