@@ -53,7 +53,7 @@ const useResults = (query, setResults, getInfo, searchable) => {
 };
 
 /**
- *
+ * getInfo
  * @param {array} searchable - Array to be searched
  * @param {string} wordToMatch - String to match against
  */
