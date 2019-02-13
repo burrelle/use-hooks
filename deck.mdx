@@ -1,4 +1,15 @@
-export { future as theme } from 'mdx-deck/themes';
+export { default as theme } from './theme';
+import { Appear } from 'mdx-deck';
+import { Split } from 'mdx-deck/layouts';
+import { CodeBlock } from './src/components/CodeBlock';
+import { Container } from './src/components/Styles';
+import { StateCounterSource } from './source/StateCounterSource';
+import { ES6CounterSource } from './source/ES6CounterSource';
+import { ClassSource } from './source/ClassSource';
+import { StatelessFunctionalSource } from './source/StatelessFunctionalSource';
+import { ArrayDestructuring } from './source/ArrayDestructuring';
+import * as Steps from './source/HooksCounterSteps';
+import './script.js';
 
 ## The one with the hooks 🎣
 
@@ -13,3 +24,186 @@ import StateCounter from './src/components/StateCounter';
 ## <StateCounter />
 
 ---
+
+<CodeBlock>{StateCounterSource}</CodeBlock>
+
+---
+
+# 🤷🏻‍♂
+
+<CodeBlock>{`
+this.increment = this.increment.bind(this);
+this.decrement = this.decrement.bind(this);
+`}</CodeBlock>
+
+---
+
+## Enter ES6
+
+<CodeBlock>{ES6CounterSource}</CodeBlock>
+
+---
+
+### Different ways of writing React Components?
+
+---
+
+export default Split;
+
+<Container>
+  Classes
+  <hr />
+  <CodeBlock>{ClassSource}</CodeBlock>
+</Container>
+
+<Container>
+<i>Stateless</i> Functional Components
+<hr />
+<CodeBlock>{StatelessFunctionalSource}</CodeBlock>
+</Container>
+---
+
+Can we write more functions?
+
+🤔
+
+---
+
+Let's make a function for holding some state
+
+▶️
+
+---
+
+<CodeBlock style={{ fontSize: 32 }}>{`function useState()`}</CodeBlock>
+
+---
+
+<CodeBlock
+  style={{ fontSize: 32 }}
+>{`function useState(initialState)`}</CodeBlock>
+
+---
+
+<CodeBlock
+  style={{ fontSize: 32 }}
+>{`const [state, setState] = function useState(initialState)`}</CodeBlock>
+
+---
+
+⏸️️
+
+<CodeBlock style={{ fontSize: 32 }}>{`const [state, setState]`}</CodeBlock>
+
+---
+
+Array Destructuring
+
+<CodeBlock style={{ fontSize: 24 }}>{ArrayDestructuring}</CodeBlock>
+
+---
+
+📝 Rewrite our counter
+
+---
+
+export default Split;
+
+<Container>
+  <CodeBlock>{ES6CounterSource}</CodeBlock>
+</Container>
+
+<Container>
+  🏄🏻‍♂️
+  <CodeBlock>{Steps.One}</CodeBlock>
+</Container>
+
+---
+
+export default Split;
+
+<Container>
+  <CodeBlock>{ES6CounterSource}</CodeBlock>
+</Container>
+
+<Container>
+  <CodeBlock>{Steps.Two}</CodeBlock>
+</Container>
+
+---
+
+useState() Hook 🎣
+
+---
+
+export default Split;
+
+<Container>
+  <CodeBlock>{ES6CounterSource}</CodeBlock>
+</Container>
+
+<Container>
+  <p>Value is just a variable</p>
+  <CodeBlock>{Steps.Three}</CodeBlock>
+</Container>
+
+---
+
+export default Split;
+
+<Container>
+  <CodeBlock>{ES6CounterSource}</CodeBlock>
+</Container>
+
+<Container>
+  <CodeBlock>{Steps.Four}</CodeBlock>
+</Container>
+
+---
+
+export default Split;
+
+<Container>
+  <CodeBlock>{ES6CounterSource}</CodeBlock>
+</Container>
+
+<Container>
+  <p>
+    No <i>this</i> required
+  </p>
+  <CodeBlock>{Steps.Four}</CodeBlock>
+</Container>
+
+---
+
+import Counter from './src/components/Counter';
+
+## <Counter />
+
+---
+
+Enough with the counting.
+
+---
+
+_Let's get some_ 🍺
+
+---
+
+React Lifecycle Methods
+
+<Container>
+<Appear>
+<p>componentWillMount</p>
+<p>componentDidMount</p>
+<p>componentWillUpdate</p>
+<p>componentDidUpdate</p>
+<p>componentWillUnmount</p>
+👋🏻
+</Appear>
+</Container>
+---
+
+Let's fetch some data...
+
+<Appear><h2>🍺</h2></Appear>
