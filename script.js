@@ -4,6 +4,7 @@ if (typeof document !== 'undefined') {
   require('style-loader!css-loader!./styles.css');
   require('codemirror/mode/javascript/javascript');
   require('codemirror/mode/jsx/jsx');
+  require('regenerator-runtime');
 
   // make it easier to navigate the slides via the keyboard
   document.body.tabIndex = '-1';

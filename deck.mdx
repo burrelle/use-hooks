@@ -8,6 +8,8 @@ import { ES6CounterSource } from './source/ES6CounterSource';
 import { ClassSource } from './source/ClassSource';
 import { StatelessFunctionalSource } from './source/StatelessFunctionalSource';
 import { ArrayDestructuring } from './source/ArrayDestructuring';
+import Search from './src/components/Search';
+import * as Fetch from './source/FetchData';
 import * as Steps from './source/HooksCounterSteps';
 import './script.js';
 
@@ -206,4 +208,37 @@ React Lifecycle Methods
 
 Let's fetch some data...
 
-<Appear><h2>🍺</h2></Appear>
+<Appear>
+  <h2>🍺</h2>
+</Appear>
+
+---
+
+<div style={{ textAlign: 'left' }}>
+  You can’t guarantee the AJAX request won’t resolve before the component
+  mounts. If it did, that would mean that you’d be trying to setState on an
+  unmounted component, which not only won’t work, but React will yell at you
+  for. Doing AJAX in componentDidMount will guarantee that there’s a component
+  to update.
+  <p style={{ textAlign: 'right' }}>- Tyler McGinnis</p>
+</div>
+
+---
+
+export default Split;
+
+<Container>
+  Synchronously 👴🏻
+  <CodeBlock>{Fetch.Sync}</CodeBlock>
+</Container>
+
+<Container>
+  Asynchronously 😎
+  <CodeBlock>{Fetch.Async}</CodeBlock>
+</Container>
+
+---
+
+Brew Dog Search
+
+<Search />

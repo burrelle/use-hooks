@@ -6,12 +6,13 @@ class Search extends Component {
   state = {
     query: '',
     searchable: [],
-    results: [],
+    results: []
   };
 
-  async componentDidMount() {
-    const { data } = await axios.get('https://api.punkapi.com/v2/beers');
-    this.setState({ searchable: data });
+  componentDidMount() {
+    axios.get('https://api.punkapi.com/v2/beers').then(({ data }) => {
+      this.setState({ searchable: data });
+    });
   }
 
   getInfo = wordToMatch => {
@@ -21,7 +22,7 @@ class Search extends Component {
     });
   };
 
-  handleInputChange = (e) => {
+  handleInputChange = e => {
     this.setState({ query: e.target.value }, () => {
       this.state.query && this.state.query.length >= 1
         ? this.setState({ results: this.getInfo(this.state.query) })
@@ -37,7 +38,7 @@ class Search extends Component {
           value={this.state.query}
           onChange={this.handleInputChange}
         />
-        <Suggestions results={this.state.results} />
+        {this.state.results.length > 0 && <Suggestions results={this.state.results} />}
       </form>
     );
   }

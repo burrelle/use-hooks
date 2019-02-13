@@ -4,6 +4,9 @@ import styled from 'styled-components';
 const Results = styled.ul`
   list-style: none;
   padding: 1rem;
+  background: whitesmoke;
+  color: black;
+  border-radius: 1rem;
 `;
 
 const Beers = styled.li`
