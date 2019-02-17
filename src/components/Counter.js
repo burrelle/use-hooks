@@ -1,4 +1,5 @@
 import React, {useState, Fragment} from 'react'
+import { ThemeButton } from './Styles';
 
 export default function Counter(){
   const [counter, setCounter] = useState(0);
@@ -6,8 +7,8 @@ export default function Counter(){
   return(
     <Fragment>
       <p>{counter}</p>
-      <button onClick={() => setCounter(counter + 1)}>+</button>
-      <button onClick={() => setCounter(counter - 1)}>-</button>
+      <ThemeButton onClick={() => setCounter(counter + 1)}>+</ThemeButton>
+      <ThemeButton onClick={() => setCounter(counter - 1)}>-</ThemeButton>
     </Fragment>
   )
 }

@@ -1,4 +1,6 @@
-import React from "react";
+import React from 'react';
+import { ThemeButton } from './Styles';
+
 
 class Counter extends React.Component {
   constructor(props) {
@@ -20,8 +22,8 @@ class Counter extends React.Component {
     return (
       <div>
         <p>{this.state.value}</p>
-        <button onClick={this.increment}>+</button>
-        <button onClick={this.decrement}>-</button>
+        <ThemeButton onClick={this.increment}>+</ThemeButton>
+        <ThemeButton onClick={this.decrement}>-</ThemeButton>
       </div>
     );
   }
