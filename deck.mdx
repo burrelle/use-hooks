@@ -16,6 +16,12 @@ import {
   Full
 } from './source/StateSearch';
 import { Initial, HooksHandleChange, HookSearch } from './source/UseEffect';
+import {
+  FunctionWithState,
+  GetData,
+  RunOnLoad,
+  WithCustomHook
+} from './source/CustomHook';
 import Search from './src/components/Search';
 import HooksSearch from './src/components/HooksSearch';
 import * as Fetch from './source/FetchData';
@@ -349,3 +355,50 @@ export default Split;
 <Row>
   <HooksSearch />
 </Row>
+
+---
+
+Can you make your own hooks? 🎣
+
+---
+
+<CodeBlock>{`useAxios()`}</CodeBlock>
+
+---
+
+<Container>
+  Let's work backwards
+  <CodeBlock>{`return { data, error, loading }`}</CodeBlock>
+</Container>
+
+---
+
+<Container>
+  Set some state
+  <CodeBlock>{FunctionWithState}</CodeBlock>
+</Container>
+
+---
+
+<Container>
+  Fetch the data
+  <CodeBlock>{GetData}</CodeBlock>
+</Container>
+
+---
+
+<Container>
+  Fetch the data on component load
+  <CodeBlock>{RunOnLoad}</CodeBlock>
+</Container>
+
+---
+
+<Container>
+  ♻️
+  <CodeBlock style={{ fontSize: '14px' }}>{WithCustomHook}</CodeBlock>
+</Container>
+
+---
+
+![Inbetweeners](https://media.giphy.com/media/wc35PjXwGHtgA/giphy.gif)
