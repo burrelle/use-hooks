@@ -24,7 +24,7 @@ const Suggestions = ({ results }) => {
     <Results>
       {results.map(({ image_url, name }, i) => (
         <Beers key={i}>
-          <Image src={image_url} alt={name} height="64" width="16" />
+          <Image rel="prefetch" src={image_url} alt={name} height="64" width="16" />
           {name}
         </Beers>
       ))}
