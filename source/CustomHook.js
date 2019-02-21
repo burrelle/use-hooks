@@ -1,5 +1,5 @@
 export const FunctionWithState = `
-  const useAxios = (url, initialState = {}) => {
+  const useFetch = (url, initialState = {}) => {
     const [data, setData] = useState(initialState);
     const [error, setError] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -9,7 +9,7 @@ export const FunctionWithState = `
 `;
 
 export const GetData = `
-const useAxios = (url, initialState = {}) => {
+const useFetch = (url, initialState = {}) => {
   const [data, setData] = useState(initialState);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -30,7 +30,7 @@ const useAxios = (url, initialState = {}) => {
 `;
 
 export const RunOnLoad = `
-const useAxios = (url, initialState = {}) => {
+const useFetch = (url, initialState = {}) => {
   const [data, setData] = useState(initialState);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -55,10 +55,10 @@ const useAxios = (url, initialState = {}) => {
 `;
 
 export const WithCustomHook = `
-import { useAxios } from './lib/CustomHooks
+import { useFetch } from './lib/CustomHooks
 
 export default function HooksSearch() {
-  const { data, error, loading } = useAxios('https://api.punkapi.com/v2/beers');
+  const { data, error, loading } = useFetch('https://api.punkapi.com/v2/beers');
   const [query, setQuery] = useState('');
   const [searchable, setSearchable] = useState([]);
   const [results, setResults] = useState([]);
