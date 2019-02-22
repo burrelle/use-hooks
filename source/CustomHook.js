@@ -86,6 +86,7 @@ export default function HooksSearch() {
             placeholder="Search for..."
             value={query}
             onChange={e => setQuery(e.target.value)}
+            disabled={error}
           />
         </Form>
         <Suggestions results={results} />
