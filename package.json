@@ -17,7 +17,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "mdx": "mdx-deck deck.mdx -p 8000"
+    "mdx": "mdx-deck deck.mdx -p 8000",
+    "mdx-build": "mdx-deck build deck.mdx"
   },
   "eslintConfig": {
     "extends": "react-app"

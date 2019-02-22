@@ -1,14 +1,16 @@
-import React, {useState, Fragment} from 'react'
+import React, { useState } from 'react';
 import { ThemeButton } from './Styles';
 
-export default function Counter(){
+const Counter = () => {
   const [counter, setCounter] = useState(0);
 
-  return(
-    <Fragment>
+  return (
+    <div>
       <p>{counter}</p>
       <ThemeButton onClick={() => setCounter(counter + 1)}>+</ThemeButton>
       <ThemeButton onClick={() => setCounter(counter - 1)}>-</ThemeButton>
-    </Fragment>
-  )
+    </div>
+  );
 }
+
+export default Counter;
